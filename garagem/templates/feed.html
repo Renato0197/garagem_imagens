@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% block body %}
+{% include "navbar.html" %}
+<h1>Feed Principal</h1>
+<div class="gallery">
+    {% for foto in fotos %}
+        <div class="gallery-item">
+            <h3>{{ foto.titulo }}</h3>
+            <a href="{{ url_for('perfil', id_usuario=foto.usuario.id) }}">
+                <img src="{{ url_for('static', filename='fotos_post/{}'.format(foto.imagem)) }}" alt="{{ foto.titulo }}" style="max-width: 200px">
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+</div>
+
+{% endblock %}

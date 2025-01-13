@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block titulo %}
+        portão da garagem
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?v=1">
+
+</head>
+<body class="body">
+    <header class="site-header">
+        <h1>Garagem de Imagens</h1>
+    </header>
+    <div class="welcome-container">
+        <img src="{{ url_for('static', filename='fotos_pagina/post5.jpg') }}"
+             alt="Portão"
+             class="left-image"
+             onclick="abrirModal()">
+        <div class="welcome-text">
+        <form method="POST">
+            {{ form.csrf_token}}
+                <legend><h4> Cadastro</h4> </legend>
+                <p>
+                {{form.username.label()}}
+                {{form.username()}}
+                </p>
+                {{form.email.label()}}
+                    {% if form.email.erros %}
+                        {% for erro in form.email.erros %}
+                            {{ erro }}
+                        {% endfor %}
+                    {% endif %}
+                {{form.email()}}
+                <p>
+                {{form.senha.label()}}
+                {{form.senha()}}
+                </p>
+                <p>
+                {{form.confirmasenha.label()}}
+                {{form.confirmasenha()}}
+                </p>
+                {{ form.submit_criarconta() }}
+
+            </form>
+        <a href="{{ url_for('home')}}"><h4 style="text-decoration: none"><font color="white"> fazer Login</font></h4></a>
+        </div>
+    </div>
+</body>

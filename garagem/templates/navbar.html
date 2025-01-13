@@ -1,0 +1,10 @@
+<nav class="navbar">
+    <a href="{{ url_for('feed') }}" class="navbar-item navbar-feed">
+        <img src="{{ url_for('static', filename='fotos_pagina/g.jpg') }}"
+             style="width: 40px; height: 40px; border-radius: 10%; object-fit: cover; ">
+    </a>
+    <a href="{{ url_for('feed') }}" class="navbar-item navbar-home">Home</a>
+    <a href="{{ url_for('perfil', id_usuario=current_user.id) }}" class="navbar-item navbar-perfil">Perfi</a>
+    <a href="{{ url_for('sair') }}" class="navbar-item navbar-logout">Sair</a>
+    <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+</nav>

@@ -1,0 +1,264 @@
+/* ========================
+   Layout Geral
+======================== */
+/* Contêiner principal para a imagem e o texto */
+/* Cabeçalho do site */
+.site-header {
+    background-color: #8B4513; /* Marrom ou cor personalizada */
+    color: #FFD750; /* Dourado para contraste */
+    text-align: center;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Deixa o texto todo em maiúsculas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adiciona sombra para destacar */
+    position: sticky; /* Fixa no topo ao rolar a página */
+    top: 0;
+    z-index: 1000; /* Certifica-se de que o cabeçalho fique sobre outros elementos */
+}
+
+/* Espaço abaixo do cabeçalho para evitar sobreposição */
+.welcome-container {
+    margin-top: 20px; /* Ajuste conforme necessário */
+}
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+}
+
+/* Imagem no lado esquerdo */
+.left-image {
+    max-width: 40%; /* A imagem ocupará 40% da largura da tela */
+    height: auto;
+    cursor: pointer;
+    border-radius: 8px; /* Para deixar as bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+}
+
+/* Texto de boas-vindas */
+.welcome-text {
+    max-width: 50%; /* Ajusta a largura do texto */
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.welcome-text h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #FFD750; /* Dourado para destacar */
+}
+
+.welcome-text p {
+    margin: 10px 0;
+}
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #f2f2f2;
+    color: #000;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 10% auto;
+    width: 40%;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.close:hover {
+    color: red;
+}
+
+body {
+    background-color: #343835; /* Cinza escuro */
+    color: white; /* Torna o texto visível contra o fundo escuro */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Ajuste opcional para fontes */
+}
+
+.centralized-image {
+    display: block;
+    margin: 50px auto;
+    max-width: 80%; /* Ajusta o tamanho da imagem */
+    height: auto; /* Mantém a proporção */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px; /* Espaço entre os itens */
+    justify-items: center; /* Centraliza os itens no grid */
+}
+
+.gallery-item {
+    text-align: center; /* Centraliza título e imagem */
+}
+
+.gallery-item img {
+    opacity: 1; /* Começa visível */
+    transition: opacity 2s ease-in-out; /* Controla o efeito de transição */
+}
+
+.gallery-item img.hidden {
+    opacity: 0; /* Esconde a imagem suavemente */
+}
+
+.gallery-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================
+   Modal
+======================== */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #f2f2f2; /* Fundo cinza claro */
+    color: #000; /* Textos escuros */
+    margin: 15% auto; /* Centraliza verticalmente */
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%; /* Largura do modal */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* ========================
+   Navbar
+======================== */
+.navbar {
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    background-color: #8B4513; /* Cor de fundo */
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 8px; /* Cantos arredondados */
+}
+
+.navbar-item {
+    text-decoration: none; /* Remove o sublinhado */
+    color: white; /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
+    padding: 8px 12px; /* Espaçamento interno */
+    border-radius: 4px; /* Cantos arredondados para hover */
+    transition: background-color 0.3s ease; /* Animação suave */
+}
+
+
+.navbar-item:hover {
+    background-color: #A0500D; /* Cor ao passar o mouse */
+}
+
+.navbar-home {
+    margin-right: 1010px; /* Espaçamento entre "Perfil" e "Sair" */
+}
+/* Move o item "Feed" para a esquerda */
+.navbar-feed {
+    margin-right: auto; /* Empurra o item para o lado esquerdo */
+}
+
+/* Garantindo que "Perfil" e "Sair" fiquem alinhados */
+.navbar-perfil,
+.navbar-logout {
+    margin-left: 15px; /* Espaçamento entre "Perfil" e "Sair" */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Muda para coluna em telas pequenas */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .navbar-item {
+        display: block; /* Cada item ocupa uma linha */
+        margin: 5px 0; /* Espaçamento vertical entre os itens */
+    }
+}
+
+.popup-title {
+    background-color: #8B4513; /* Fundo mais escuro */
+    color: #FFD750; /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho do texto */
+    font-weight: bold; /* Negrito */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 8px; /* Borda arredondada */
+    margin-bottom: 20px; /* Espaçamento em relação ao conteúdo abaixo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+}
+
+
+/*perfil*/
+.icone-criar {
+    width: 40px; /* Ajuste o tamanho do ícone */
+    height: 40px; /* Mantenha a proporção para ser quadrado */
+    position: absolute;
+    top: 99px; /* Ajuste o valor conforme o tamanho da sua navbar */
+    left: 95px; /* Distância da borda esquerda */
+    z-index: 10; /* Garante que a imagem fique acima de outros elementos */
+    cursor: pointer; /* Adiciona um cursor de ponteiro para indicar que é clicável */
+}
+.criar-form {
+    text-decoration: none; /* Remove o sublinhado */
+    color:#393939; /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
+    padding: 8px 12px; /* Espaçamento interno */
+    margin-left: 41px;
+    transition: background-color 0.3s ease; /* Animação suave */
+}
+.quadro{
+    width: 180px; /* Ajuste o tamanho do ícone */
+    height: 140px; /* Mantenha a proporção para ser quadrado */
+    top: 99px; /* Ajuste o valor conforme o tamanho da sua navbar */
+    left: 50px; /* Distância da borda esquerda */
+    z-index: 10; /* Garante que a imagem fique acima de outros elementos */
+}

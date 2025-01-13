@@ -1,0 +1,47 @@
+{% extends "home.html" %}
+
+{% block titulo %}
+perfil garageiro: {{usuario}}
+{% endblock %}
+
+{% block body %}
+<body>
+
+{% include "navbar.html" %}
+<div style="margin-left: 15px"><h1> {{usuario.username}} </h1></div>
+
+{% if form %}
+ <div class="welcome-container">
+        <img src="{{ url_for('static', filename='fotos_pagina/crie2.jpg') }}"
+             alt="Portão"
+             class="icone-criar"
+             style="border-radius: 33%"
+             onclick="abrirModal()">
+</div>
+<div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3 class="popup-title">O que a de novo ?</h3>
+                <form method="POST" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                <div>
+                {{form.foto()}}</div><br>
+                <div>
+                {{ form.titulo.label(class="criar-form")}}
+                {{ form.titulo() }}
+
+                {{ form.botao_submit_post() }}</div>
+                </form>
+        </div>
+ </div>
+{%  endif %}
+<div class="gallery">
+{% for foto in usuario.foto %}
+   <div class="gallery-item">
+       <h3>{{ foto.titulo }}</h3>
+        <img src="{{url_for('static', filename='fotos_post/{}'.format(foto.imagem))}}"  alt="{{ foto.titulo }}" style="max-width: 200px">
+   </div>
+{% endfor %}
+</div>
+</body>
+{% endblock %}

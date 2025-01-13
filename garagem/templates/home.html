@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block titulo %}
+        Garagem de Imagens
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?v=1">
+    <script>
+        function abrirModal() {
+            const modal = document.getElementById('modalLogin');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modalLogin');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalLogin');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</head>
+{% block body %}
+<body class="body">
+    <header class="site-header">
+        <h1>Garagem de Imagens</h1>
+    </header>
+
+    <div class="welcome-container">
+        <img src="{{ url_for('static', filename='fotos_pagina/post5.jpg') }}"
+             alt="Portão"
+             class="left-image"
+             onclick="abrirModal()">
+
+        <div class="welcome-text ">
+            <h2>Bem-vindo à nossa garagem</h2>
+            <p>Aqui compartilhamos momentos e ideias em forma de imagem.</p>
+            <p><strong> <- Abra o portão</strong> para continuar!</p>
+            <div class="gallery gallery-item gallery-animado gallery-esconde" id="dynamic-content">
+            <img src="{{ url_for('static', filename='fotos_post/default.jpg') }}" alt="Imagem inicial" class="quadro">
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal de login -->
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3 class="popup-title">Login</h3>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <p>
+                    {{ form.email.label() }}
+                    {% if form.email.erros %}
+                        {% for erro in form.email.erros %}
+                            {{ erro }}
+                        {% endfor %}
+                    {% endif %}
+                    {{ form.email() }}
+
+                </p>
+                <p>
+                    {{ form.senha.label() }}
+                    {{ form.senha() }}
+                </p>
+                {{ form.botao_entrar() }}<p></p>
+                <div class="cwelcome-container"  onclick="abrirModal()"><a href="{{url_for('cadastro')}}"
+                style="text-decoration: none"><font color=" blue"> cadastrar-se</font></a></div>
+            </form>
+        </div>
+    </div>
+<script>
+    let isUpdating = false;
+
+    function atualizarConteudo() {
+        if (isUpdating) return; // Evita sobreposição de atualizações
+        isUpdating = true;
+
+        const dynamicContent = document.getElementById('dynamic-content');
+        const currentImage = dynamicContent.querySelector('img');
+
+        // Aplica o efeito de fade-out
+        currentImage.classList.add('hidden');
+
+        // Aguarda 2 segundos para trocar a imagem
+        setTimeout(() => {
+            fetch('/atualizar-conteudo') // Rota que retorna a nova imagem
+                .then(response => response.text())
+                .then(data => {
+                    dynamicContent.innerHTML = data; // Substitui o conteúdo da imagem
+                    const newImage = dynamicContent.querySelector('img');
+                    newImage.classList.remove('hidden'); // Remove a classe 'hidden' para fade-in
+                })
+                .catch(error => console.error('Erro ao atualizar conteúdo:', error))
+                .finally(() => {
+                    isUpdating = false;
+                });
+        }, 2000); // Tempo do fade-out
+    }
+
+    setInterval(atualizarConteudo, 4000); // Atualiza a cada 4 segundos
+</script>
+
+</body>
+{% endblock %}
+</html>
