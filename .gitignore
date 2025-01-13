@@ -1,8 +1,8 @@
 instance
 teste.py
-er.name
-git.txt
-pyvenv.cfg
+er.name.
+git.
+pyvenv.cfg.
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
