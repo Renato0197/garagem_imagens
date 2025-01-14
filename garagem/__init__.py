@@ -13,9 +13,9 @@ if db_url:
     if 'sslmode' not in db_url:
         db_url += '?sslmode=require'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SECRET_KEY'] = '01c68762752ec23cd8e9c840595a096a'
 app.config['UPLOAD_FODER']= 'static/fotos_post'
 
